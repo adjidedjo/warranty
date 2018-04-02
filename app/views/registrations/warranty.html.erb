@@ -1,0 +1,45 @@
+<div class="row">
+  <div class="panel panel-info">
+    <div class="panel-heading">
+      Form Success Rate
+    </div>
+    <div class="panel-body">
+      <div class="row">
+        <%= form_for(@warranty, {:class => "form-horizontal"}) do |f| %>
+        <% if @warranty.errors.any? %>
+        <div id="error_explanation">
+          <h4>Not Saved. Click <%= link_to "this", new_sales_productivity_path %> for a new productivity
+          or fill correctly Form Below </h4>
+
+          <ul>
+            <% @warranty.errors.full_messages.each do |msg| %>
+            <li>
+              <%= msg %>
+            </li>
+            <% end %>
+          </ul>
+        </div>
+        <% end %>
+        <fieldset>
+          <div class="form-group">
+            <label class="col-lg-2 control-label">NAMA</label>
+            <div class="col-lg-10">
+              <%= f.text_field "name", class: 'form-control' %>
+            </div>
+          </div>
+        </fieldset>
+        <fieldset>
+          <div class="form-group">
+            <label class="col-lg-2 control-label">ALAMAT</label>
+            <div class="col-lg-10">
+              <%= f.text_field "address", class: 'form-control' %>
+            </div>
+          </div>
+        </fieldset>
+        </div>
+          <%= f.submit "CREATE", class: "btn btn-primary" %>
+        <% end %>
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,203 @@
+<!-- <div class="block-center mt-xl wd-xl"> -->
+<!-- START panel-->
+<div class="row">
+  <div class="col-md-8 col-md-offset-2">
+    <div class="panel panel-dark panel-flat">
+      <div class="panel-heading text-center">
+        Register your Warranty.
+      </div>
+      <div class="panel-body">
+        <%= form_for(@warranty, {:class => "form-horizontal"}) do |f| %>
+
+          <fieldset>
+            <div class="form-group has-feedback">
+              <label class="col-sm-2 control-label">Nama:</label>
+              <div class="col-sm-3">
+                <%= f.text_field :name, class: "form-control", required: "required" %>
+              </div>
+              <label class="col-sm-2 control-label">Gender:</label>
+              <div class="col-sm-3">
+                <label class="radio-inline c-radio">
+                  <%= f.radio_button :gender, 'pria' %>
+                  <span class="fa fa-circle"></span>Pria</label>
+                <label class="radio-inline c-radio">
+                  <%= f.radio_button :gender, 'wanita' %>
+                  <span class="fa fa-circle"></span>Wanita</label>
+              </div>
+            </div>
+          </fieldset>
+
+          <fieldset>
+            <div class="form-group has-feedback">
+              <label class="col-sm-2 control-label">Tanggal Lahir:</label>
+              <div class="col-sm-2">
+                <%= f.select(:birth_date, (1..31), {prompt: "Tanggal"}, {class: "form-control m-b", required: "required"}) %>
+              </div>
+              <div class="col-sm-2">
+                <%= f.select(:birth_month, @month, {prompt: "Bulan"}, {class: "form-control m-b", required: "required"}) %>
+              </div>
+              <div class="col-sm-2">
+                <%= f.select(:birth_year, @year, {prompt: "Tahun"}, {class: "form-control m-b", required: "required"}) %>
+              </div>
+            </div>
+          </fieldset>
+
+          <fieldset>
+            <div class="form-group has-feedback">
+              <label class="col-sm-2 control-label">Alamat:</label>
+              <div class="col-sm-4">
+                <%= f.text_field :address, class: "form-control", required: "required" %>
+              </div>
+              <label class="col-sm-1 control-label">Kota:</label>
+              <div class="col-sm-2">
+                <%= f.text_field :city, class: "form-control", required: "required" %>
+              </div>
+              <label class="col-sm-1 control-label">KodePos:</label>
+              <div id="registration_zip_code" class="col-sm-2">
+                <%= f.text_field :zip_code, class: "form-control", required: "required" %>
+              </div>
+            </div>
+          </fieldset>
+
+          <fieldset>
+            <div class="form-group has-feedback">
+              <label class="col-sm-2 control-label">Tanggal Pembelian:</label>
+              <div class="col-sm-2">
+                <%= f.select(:buy_date, (1..31), {prompt: "Tanggal"}, {class: "form-control m-b", required: "required"}) %>
+              </div>
+              <div class="col-sm-2">
+                <%= f.select(:buy_month, @month, {prompt: "Bulan"}, {class: "form-control m-b", required: "required"}) %>
+              </div>
+              <div class="col-sm-2">
+                <%= f.select(:buy_year, @year_buy, {prompt: "Tahun"}, {class: "form-control m-b", required: "required"}) %>
+              </div>
+            </div>
+          </fieldset>
+
+          <fieldset>
+            <div class="form-group has-feedback">
+              <label class="col-sm-2 control-label">Harga Pembelian:</label>
+              <div class="col-sm-3">
+                <%= f.text_field :sales_amount, class: "form-control", required: "required", data: {:"data-parsley-equalto" => "number"} %>
+              </div>
+            </div>
+          </fieldset>
+
+          <fieldset>
+            <div class="form-group has-feedback">
+              <label class="col-sm-2 control-label">Ukuran Busa:</label>
+              <div class="checkbox col-sm-2">
+                <label>
+                  <%= f.check_box :foam_size, {:multiple => true}, "80x200" %>
+                  <span class="fa fa-check"></span>80 x 200 cm</label>
+                <label>
+                  <%= f.check_box :foam_size, {:multiple => true}, "90x200" %>
+                  <span class="fa fa-check"></span>90 x 200 cm</label>
+                <label>
+                  <%= f.check_box :foam_size, {:multiple => true}, "100x200" %>
+                  <span class="fa fa-check"></span>100 x 200 cm</label>
+              </div>
+              <div class="checkbox col-sm-2">
+                <label>
+                  <%= f.check_box :foam_size, {:multiple => true}, "120x200" %>
+                  <span class="fa fa-check"></span>120 x 200 cm</label>
+                <label>
+                  <%= f.check_box :foam_size, {:multiple => true}, "160x200" %>
+                  <span class="fa fa-check"></span>160 x 200 cm</label>
+                <label>
+                  <%= f.check_box :foam_size, {:multiple => true}, "80x200" %>
+                  <input type="checkbox" value="other" name="size-other" />
+                  <span class="fa fa-check"></span>lainnya:</label>
+                <input id="lainnya" type="text" class="form-control" />
+              </div>
+            </div>
+          </fieldset>
+
+          <fieldset>
+            <div class="form-group has-feedback">
+              <label class="col-sm-2 control-label">Nama Toko:</label>
+              <div class="col-sm-4">
+                <%= f.text_field :store_name, class: "form-control", required: "required" %>
+              </div>
+            </div>
+          </fieldset>
+
+          <fieldset>
+            <div class="form-group has-feedback">
+              <label class="col-sm-2 control-label">Alamat Toko:</label>
+              <div class="col-sm-4">
+                <%= f.text_field :store_address, class: "form-control", required: "required" %>
+              </div>
+            </div>
+          </fieldset>
+
+          <fieldset>
+            <div class="form-group has-feedback">
+              <label class="col-sm-2 control-label">Kapan terakhir Anda membeli kasur busa?</label>
+              <div class="checkbox col-sm-3">
+                <label>
+                  <%= f.radio_button :last_buy_year, '5' %>
+                  <span class="fa fa-check"></span>Di bawah 5 tahun</label>
+                <label>
+                  <%= f.radio_button :last_buy_year, '5-10' %>
+                  <span class="fa fa-check"></span>5-10 tahun </label>
+                <label>
+                  <%= f.radio_button :last_buy_year, '11-15' %>
+                  <span class="fa fa-check"></span>11-15 tahun</label>
+                <label>
+                  <%= f.radio_button :last_buy_year, '15' %>
+                  <span class="fa fa-check"></span>Di atas 15 tahun</label>
+              </div>
+            </div>
+          </fieldset>
+
+          <fieldset>
+            <div class="form-group has-feedback">
+              <label class="col-sm-2 control-label">Darimanakah Anda mengetahui Kasur Busa Grand?</label>
+              <div class="checkbox col-sm-3">
+                <label>
+                  <%= f.radio_button :reference, 'keluarga' %>
+                  <span class="fa fa-check"></span>Keluarga / Teman</label>
+                <label>
+                  <%= f.radio_button :reference, 'bilboard' %>
+                  <span class="fa fa-check"></span>Bilboard Iklan</label>
+                <label>
+                  <%= f.radio_button :reference, 'toko' %>
+                  <span class="fa fa-check"></span>Berkunjung ke Toko</label>
+                <label>
+                  <%= f.radio_button :reference, 'pameran' %>
+                  <span class="fa fa-check"></span>Pameran</label>
+                <label>
+                  <%= f.radio_button :reference, 'koran' %>
+                  <span class="fa fa-check"></span>Koran</label>
+                <label>
+                  <%= f.radio_button :reference, 'other' %>
+                  <span class="fa fa-check"></span>Lain-lain</label>
+              </div>
+            </div>
+          </fieldset>
+
+          <fieldset>
+            <div class="form-group has-feedback">
+              <label class="col-sm-2 control-label">Apakah anda pernah menggunakan Kasur Busa Grand?</label>
+              <div class="col-sm-3">
+                <label class="radio-inline c-radio">
+                  <%= f.radio_button :used_before, 'pernah' %>
+                  <span class="fa fa-circle"></span>Pernah</label>
+                <label class="radio-inline c-radio">
+                  <%= f.radio_button :used_before, 'tidak pernah' %>
+                  <span class="fa fa-circle"></span>Tidak Pernah</label>
+              </div>
+            </div>
+          </fieldset>
+          
+          <button type="submit" class="btn btn-block btn-primary mt-lg">
+            Register
+          </button>
+        <% end %>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- END panel-->
+<!-- </div> -->
