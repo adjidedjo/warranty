@@ -2,7 +2,7 @@ Rails.application.routes.draw do
   
   resources :registrations
     
-  get 'warranty/:type_id' => 'warranties#warranty'
+  get 'warranty' => 'warranties#warranty'
   # defaults to dashboard
   root :to => 'registrations#new'
 
