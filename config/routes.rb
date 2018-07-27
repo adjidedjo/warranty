@@ -4,7 +4,7 @@ Rails.application.routes.draw do
     
   get 'warranty' => 'warranties#warranty'
   # defaults to dashboard
-  root :to => 'registrations#new'
+  root :to => 'warranties#warranty'
 
   # view routes
   get 'planning/outstanding_order'
