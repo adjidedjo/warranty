@@ -183,7 +183,7 @@
           </div>
         </fieldset>
 
-        <button type="submit" class="btn btn-block btn-primary mt-lg" id="btn-register">
+        <button type="submit" class="btn btn-block btn-primary mt-lg" id="btn-register" disabled>
           Register
         </button>
         <% end %>
@@ -198,6 +198,6 @@
   var checker = document.getElementById('check1');
   var sendbtn = document.getElementById('btn-register');
   checker.onchange = function() {
-    sendbtn.disabled = this.checked;
+    sendbtn.disabled = !this.checked;
   };
 </script>>
