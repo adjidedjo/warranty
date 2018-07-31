@@ -1,6 +1,10 @@
 class WarrantiesController < ApplicationController
   before_action :set_registration, only: [:show, :edit, :update, :destroy]
   
+  def terms
+    
+  end
+  
   def warranty
     @warranty = Registration.new
     @reg_id = Registration.generate_id
