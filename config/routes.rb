@@ -2,7 +2,7 @@ Rails.application.routes.draw do
   
   resources :registrations
     
-  get 'warranty' => 'warranties#warranty'
+  get 'warranty/:serial' => 'warranties#warranty'
   get 'terms' => 'warranties#terms'
   # defaults to dashboard
   root :to => 'warranties#warranty'

@@ -7,7 +7,6 @@ class WarrantiesController < ApplicationController
   
   def warranty
     @warranty = Registration.new
-    @reg_id = Registration.generate_id
     @month = ["JANUARI", "FEBRUARI", "MARET", "APRIL", "MEI", "JUNI", "JULI", "AGUSTUS", "SEPTEMBER", "OKTOBER", "NOVEMBER", "DESEMBER"]
     @year = (Date.today.year-80)..(Date.today.year+1)
     @year_buy = (Date.today.year-10)..(Date.today.year+1)
