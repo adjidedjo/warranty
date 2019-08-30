@@ -3,8 +3,9 @@ Rails.application.routes.draw do
   resources :lucky_draws do
     get "new/:template_id", to: "lucky_draws#new", on: :collection
   end
+  get "lucky_draws/spin_time"
+  
   resources :registrations
-    
   get 'warranty/:serial' => 'warranties#warranty'
   get 'terms' => 'warranties#terms'
   # defaults to dashboard

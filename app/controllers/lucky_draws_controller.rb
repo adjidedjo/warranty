@@ -1,5 +1,10 @@
 class LuckyDrawsController < ApplicationController
   before_action :set_lucky_draw, only: [:show, :edit, :update, :destroy]
+  skip_before_action :set_lucky_draw, only: :spin_time
+  
+  def spin_time
+    
+  end
 
   # GET /lucky_draws
   # GET /lucky_draws.json

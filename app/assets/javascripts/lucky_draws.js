@@ -1,35 +1,24 @@
-<div class="row">
-  <div class="col-md-8 col-md-offset-2">
-  
-    <h1 id="headerNames">?</h1>
-    <div class="button" id="startButton">start</div>
-    <div class="button" id="stopButton">stop</div>
-    <div id="timerWrapper">Selamat Anda Mendapatkan: <br />
-      
-      <span id="timer"></span>
-      <br /><br />
-       Anda juga berkesempatan untuk mendapatkan Grand Prize dari Royal Corp. <br />
-       Kode Voucher akan kami kirimkan melalui email yang telah didaftarkan.
-    </div>
-  
-  </div>
-</div>
+# Place all the behaviors and hooks related to the matching controller here.
+# All this logic will automatically be available in application.js.
+# You can use CoffeeScript in this file: http://coffeescript.org/
 
-<script>
-  "use strict";
+"use strict";
 
 // Change to false if you don't want a timer
 const showTimer = true;
 
 // Set timer countdown time here in minutes : seconds format
+const time = 0 + ":" + 19;
 
 // Add list of names here
 const namesList = [
-    'BANTAL ELITE',
-    'GULING ELITE',
-    'MATRAS PROTECTOR ELITE', 
-    'SAMSUNG GALAXY NOTE 10+',
-    '100.000 RUPIAH'
+    'Anne',
+    'Bob',
+    'Catherine', 
+    'Dave',
+    'Erin',
+    'Frank',
+    'Gloria'
 ];
 
 // Default variables
@@ -45,6 +34,33 @@ const timer = document.getElementById('timer');
 
 // Optional countdown timer
 // Add zero in front of numbers < 10
+function checkSecond(sec) {
+  if (sec < 10 && sec >= 0) {
+        sec = "0" + sec;
+    } 
+  if (sec < 0) {
+        sec = "59";
+    }
+  return sec;
+}
+
+const startTimer = function() {
+  const presentTime = timer.innerHTML;
+  const timeArray = presentTime.split(/[:]+/);
+  let m = timeArray[0];
+  let s = checkSecond((timeArray[1] - 1));
+    
+  if (s==59) {
+        m = m-1;
+    }
+  if (m < 0) {
+        timesUp.style.display = "block";
+    }
+  
+  timer.innerHTML = m + ":" + s;
+    
+    setTimeout(startTimer, 1000);
+}
 
 // Start or stop the name shuffle on button click
 startButton.addEventListener('click', function() {
@@ -61,10 +77,11 @@ stopButton.addEventListener('click', function() {
     this.style.display = "none";
     startButton.style.display = "block";
     clearInterval(intervalHandle);
-    timer.innerHTML = headerNames.textContent;
+    timer.innerHTML = time;
     if (showTimer===true) {
         timerWrapper.classList.add('visible');
     }
+    startTimer();
 });
 
 // Allow use of spacebar to start/stop name shuffle
@@ -94,5 +111,9 @@ document.body.onkeyup = function(e) {
 } 
 
 // Blinking warning
-  
-</script>
+var backgroundInterval = setInterval(function() {
+  timesUp.classList.toggle("backgroundRed");
+}, 1000)
+
+
+
