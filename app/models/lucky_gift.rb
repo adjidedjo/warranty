@@ -1,0 +1,2 @@
+class LuckyGift < ApplicationRecord
+end

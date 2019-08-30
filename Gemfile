@@ -18,6 +18,10 @@ gem 'jquery-ui-rails'
 # gem 'active_model_serializers'
 # gem 'rack-cors'
 
+gem 'carrierwave', '~> 1.0'
+
+gem 'browser'
+
 # authentication
 gem 'devise'
 gem 'cancancan'

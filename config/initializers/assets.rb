@@ -7,3 +7,5 @@ Rails.application.config.assets.version = '1.0'
 # application.js, application.css, and all non-JS/CSS in app/assets folder are already added.
 Rails.application.config.assets.precompile += %w( registrations.js )
 Rails.application.config.assets.precompile += %w( registrations.css )
+Rails.application.config.assets.precompile += %w( lucky_draws.js )
+Rails.application.config.assets.precompile += %w( lucky_draws.css )

@@ -1,0 +1,25 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Lucky Draws</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @lucky_draws.each do |lucky_draw| %>
+      <tr>
+        <td><%= link_to 'Show', lucky_draw %></td>
+        <td><%= link_to 'Edit', edit_lucky_draw_path(lucky_draw) %></td>
+        <td><%= link_to 'Destroy', lucky_draw, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Lucky Draw', new_lucky_draw_path %>

@@ -1,11 +1,17 @@
 Rails.application.routes.draw do
   
+  resources :lucky_draws do
+    get "new/:template_id", to: "lucky_draws#new", on: :collection
+  end
   resources :registrations
     
   get 'warranty/:serial' => 'warranties#warranty'
   get 'terms' => 'warranties#terms'
   # defaults to dashboard
   root :to => 'warranties#warranty'
+  
+  get 'lucky_draws/lucky_draw'
+  post 'lucky_draws/lucky_draw'
   
   get 'pages/registered'
   get 'pages/error500'
