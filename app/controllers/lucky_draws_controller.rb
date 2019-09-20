@@ -30,15 +30,13 @@ class LuckyDrawsController < ApplicationController
   # POST /lucky_draws.json
   def create
     @lucky_draw = LuckyDraw.new(lucky_draw_params)
-    @lucky_draw.grand_voucher = LuckyDraw.generate_code(10)
-    @lucky_draw.gift = LuckyDraw.generate_gift(lucky_draw_params[:store_id])
 
     respond_to do |format|
       if @lucky_draw.save 
-        format.html { redirect_to @lucky_draw }
+        format.html { redirect_to lucky_draws_path }
         format.json { render :show, status: :created, location: @lucky_draw }
       else
-        format.html { redirect_to pages_error500_path }
+        format.html { render :new }
         format.json { render json: @lucky_draw.errors, status: :unprocessable_entity }
       end
     end
@@ -76,7 +74,7 @@ class LuckyDrawsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def lucky_draw_params
-      params.require(:lucky_draw).permit(:nama, :alamat, :notelpon, :email, :harga, :store_id, :faktur, 
-      :gift, :grand_voucher, :password)
+      params.require(:lucky_draw).permit(:nama, :voucher_royal, :serial, :email, :nilai_voucher, :store_id, :faktur, 
+      :id_img, :voucher_traveloka, :serial_img, :nilai_voucher_traveloka)
     end
 end
