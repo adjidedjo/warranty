@@ -12,11 +12,11 @@
           <div class="form-group has-feedback">
             <label class="col-sm-2 control-label">Voucher Royal:</label>
             <div class="col-sm-3">
-              <%= f.text_field :voucher_royal, class: "form-control", required: "required" %>
+              <%= f.text_field :voucher_royal, class: "form-control", required: "required", readonly: f.object.persisted? %>
             </div>
             <label class="col-sm-2 control-label">Serial:</label>
             <div class="col-sm-4">
-              <%= f.text_field :serial, class: "form-control", required: "required" %>
+              <%= f.text_field :serial, class: "form-control", required: "required", readonly: f.object.persisted? %>
             </div>
           </div>
         </fieldset>
@@ -25,11 +25,11 @@
           <div class="form-group has-feedback">
             <label class="col-sm-2 control-label">Nama:</label>
             <div class="col-sm-3">
-              <%= f.text_field :nama, class: "form-control", required: "required" %>
+              <%= f.text_field :nama, class: "form-control", required: "required", readonly: f.object.persisted? %>
             </div>
             <label class="col-sm-2 control-label">Email:</label>
             <div id="registration_zip_code" class="col-sm-4">
-              <%= f.text_field :email, class: "form-control", onkeydown: "validate(this.value)", required: "required" %>
+              <%= f.text_field :email, class: "form-control", onkeydown: "validate(this.value)", required: "required", readonly: f.object.persisted? %>
             </div>
           </div>
         </fieldset>
@@ -38,37 +38,74 @@
           <div class="form-group has-feedback">
             <label class="col-sm-2 control-label">Nilai Voucher:</label>
             <div class="col-sm-3">
-              <%= f.text_field :nilai_voucher, class: "form-control", required: "required" %>
+              <%= f.text_field :nilai_voucher, class: "form-control", required: "required", readonly: f.object.persisted? %>
             </div>
           </div>
         </fieldset>
+        <% unless f.object.persisted? %>    
+          <fieldset>
+            <div class="custom-file has-feedback">
+              <label class="col-sm-2 control-label">Upload Faktur:</label>
+              <div class="col-sm-3">
+                <%= f.file_field :faktur, class: "custom-file-input", required: "required" %>
+              </div>
+            </div>
+          </fieldset>
+          
+          <fieldset>
+            <div class="custom-file has-feedback">
+              <label class="col-sm-2 control-label">Upload Barcode:</label>
+              <div class="col-sm-3">
+                <%= f.file_field :serial_img, class: "custom-file-input", required: "required" %>
+              </div>
+            </div>
+          </fieldset>
+          
+          <fieldset>
+            <div class="custom-file has-feedback">
+              <label class="col-sm-2 control-label">Upload KTP:</label>
+              <div class="col-sm-4">
+                <%= f.file_field :id_img, class: "custom-file-input", required: "required" %>
+              </div>
+            </div>
+          </fieldset>
+        <% end %>
         
-        <fieldset>
-          <div class="custom-file has-feedback">
-            <label class="col-sm-2 control-label">Upload Faktur:</label>
-            <div class="col-sm-3">
-              <%= f.file_field :faktur, class: "custom-file-input", required: "required" %>
+        <% if f.object.persisted? %>
+          <fieldset>
+            <div class="form-group has-feedback">
+              <label class="col-sm-2 control-label">Nilai Voucher Traveloka:</label>
+              <div class="col-sm-3">
+                <%= f.text_field :nilai_voucher_traveloka, class: "form-control" %>
+              </div>
             </div>
-          </div>
-        </fieldset>
-        
-        <fieldset>
-          <div class="custom-file has-feedback">
-            <label class="col-sm-2 control-label">Upload Barcode:</label>
-            <div class="col-sm-3">
-              <%= f.file_field :serial_img, class: "custom-file-input", required: "required" %>
+            
+            <div class="form-group has-feedback">
+              <label class="col-sm-2 control-label">Sudah kirim email?:</label>
+              <div class="col-sm-3">
+                <%= f.check_box :terkirim %>
+              </div>
             </div>
-          </div>
-        </fieldset>
-        
-        <fieldset>
-          <div class="custom-file has-feedback">
-            <label class="col-sm-2 control-label">Upload KTP:</label>
-            <div class="col-sm-4">
-              <%= f.file_field :id_img, class: "custom-file-input", required: "required" %>
+          </fieldset>
+          
+          <fieldset>
+            <div class="form-group has-feedback">
+              <div class="col-sm-3">
+                <%= image_tag(@lucky_draw.faktur.thumb.url) %>
+              </div>
+            </div>  
+            <div class="form-group has-feedback">
+              <div class="col-sm-3">
+                <%= image_tag @lucky_draw.serial_img_url%>
+              </div>
             </div>
-          </div>
-        </fieldset>
+            <div class="form-group has-feedback">
+              <div class="col-sm-3">
+                <%= image_tag @lucky_draw.id_img_url %>
+              </div>
+            </div>  
+          </fieldset>
+        <% end  %>
         
         <button type="submit" class="btn btn-block btn-primary mt-lg">
           VERIFY

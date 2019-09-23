@@ -19,6 +19,7 @@ gem 'jquery-ui-rails'
 # gem 'rack-cors'
 
 gem 'carrierwave', '~> 1.0'
+gem "mini_magick"
 
 gem 'browser'
 

@@ -47,7 +47,7 @@ class LuckyDrawsController < ApplicationController
   def update
     respond_to do |format|
       if @lucky_draw.update(lucky_draw_params)
-        format.html { redirect_to @lucky_draw, notice: 'Lucky draw was successfully updated.' }
+        format.html { redirect_to lucky_draws_path, notice: 'Lucky draw was successfully updated.' }
         format.json { render :show, status: :ok, location: @lucky_draw }
       else
         format.html { render :edit }
@@ -75,6 +75,6 @@ class LuckyDrawsController < ApplicationController
     # Never trust parameters from the scary internet, only allow the white list through.
     def lucky_draw_params
       params.require(:lucky_draw).permit(:nama, :voucher_royal, :serial, :email, :nilai_voucher, :store_id, :faktur, 
-      :id_img, :voucher_traveloka, :serial_img, :nilai_voucher_traveloka)
+      :id_img, :voucher_traveloka, :serial_img, :nilai_voucher_traveloka, :terkirim)
     end
 end
