@@ -96,14 +96,22 @@
         <% if f.object.persisted? %>
           <fieldset>
             <div class="form-group has-feedback">
+              <label class="col-sm-2 control-label">Kode Voucher Traveloka:</label>
+              <div class="col-sm-3">
+                <%= f.text_field :voucher_traveloka, class: "form-control" %>
+              </div>
+            </div>
+            
+            <div class="form-group has-feedback">
               <label class="col-sm-2 control-label">Nilai Voucher Traveloka:</label>
               <div class="col-sm-3">
                 <%= f.text_field :nilai_voucher_traveloka, class: "form-control" %>
               </div>
             </div>
-            
-            <div class="form-group has-feedback">
-              <label class="col-sm-2 control-label">Sudah kirim email?:</label>
+          </fieldset>
+          
+          <fieldset>
+            <label class="col-sm-2 control-label">Sudah kirim email?:</label>
               <div class="col-sm-3">
                 <%= f.check_box :terkirim %>
               </div>
@@ -113,7 +121,7 @@
           <fieldset>
             <div class="form-group has-feedback">
               <div class="col-sm-3">
-                <%= image_tag(@lucky_draw.faktur.thumb.url) %>
+                <%= image_tag(@lucky_draw.faktur.url) %>
               </div>
             </div>  
             <div class="form-group has-feedback">

@@ -1,9 +1,8 @@
 class LuckyDrawsController < ApplicationController
   before_action :set_lucky_draw, only: [:show, :edit, :update, :destroy]
   skip_before_action :set_lucky_draw, only: :spin_time
-  
   def spin_time
-    
+
   end
 
   # GET /lucky_draws
@@ -15,6 +14,20 @@ class LuckyDrawsController < ApplicationController
   # GET /lucky_draws/1
   # GET /lucky_draws/1.json
   def show
+
+    respond_to do |format|
+      format.html
+      format.pdf do
+        render pdf: "ID No. #{@lucky_draw.id}",
+                page_size: 'A4',
+                template: "lucky_draws/show.html.erb",
+                layout: "pdf.html",
+                orientation: "Landscape",
+                lowquality: true,
+                zoom: 1,
+                dpi: 75
+      end
+    end
   end
 
   # GET /lucky_draws/new
@@ -32,7 +45,7 @@ class LuckyDrawsController < ApplicationController
     @lucky_draw = LuckyDraw.new(lucky_draw_params)
 
     respond_to do |format|
-      if @lucky_draw.save 
+      if @lucky_draw.save
         format.html { redirect_to lucky_draws_path }
         format.json { render :show, status: :created, location: @lucky_draw }
       else
@@ -67,14 +80,15 @@ class LuckyDrawsController < ApplicationController
   end
 
   private
-    # Use callbacks to share common setup or constraints between actions.
-    def set_lucky_draw
-      @lucky_draw = LuckyDraw.find(params[:id])
-    end
 
-    # Never trust parameters from the scary internet, only allow the white list through.
-    def lucky_draw_params
-      params.require(:lucky_draw).permit(:nama, :voucher_royal, :serial, :email, :nilai_voucher, :store_id, :faktur, 
-      :id_img, :voucher_traveloka, :serial_img, :nilai_voucher_traveloka, :terkirim, :nama_barang, :kode_barang, :verifikasi)
-    end
+  # Use callbacks to share common setup or constraints between actions.
+  def set_lucky_draw
+    @lucky_draw = LuckyDraw.find(params[:id])
+  end
+
+  # Never trust parameters from the scary internet, only allow the white list through.
+  def lucky_draw_params
+    params.require(:lucky_draw).permit(:nama, :voucher_royal, :serial, :email, :nilai_voucher, :store_id, :faktur,
+    :id_img, :voucher_traveloka, :serial_img, :nilai_voucher_traveloka, :terkirim, :nama_barang, :kode_barang, :verifikasi)
+  end
 end

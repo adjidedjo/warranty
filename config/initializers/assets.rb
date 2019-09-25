@@ -8,4 +8,4 @@ Rails.application.config.assets.version = '1.0'
 Rails.application.config.assets.precompile += %w( registrations.js )
 Rails.application.config.assets.precompile += %w( registrations.css )
 Rails.application.config.assets.precompile += %w( lucky_draws.js )
-Rails.application.config.assets.precompile += %w( lucky_draws.css )
+Rails.application.config.assets.precompile += %w( lucky_draws.scss )

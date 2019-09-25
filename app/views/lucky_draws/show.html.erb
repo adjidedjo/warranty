@@ -1,98 +1,66 @@
-<div class="row">
-  <div class="col-md-8 col-md-offset-2">
-  
-    <h1 id="headerNames">?</h1>
-    <div class="button" id="startButton">start</div>
-    <div class="button" id="stopButton">stop</div>
-    <div id="timerWrapper">Selamat Anda Mendapatkan: <br />
-      
-      <span id="timer"></span>
-      <br /><br />
-       Anda juga berkesempatan untuk mendapatkan Grand Prize dari Royal Corp. <br />
-       Kode Voucher akan kami kirimkan melalui email yang telah didaftarkan.
-    </div>
-  
-  </div>
+<div class="invoice-box">
+  <table cellpadding="0" cellspacing="0">
+    <tr class="top">
+      <td colspan="4">
+      <table>
+        <tr>
+          <td class="title">VOUCHER GETAWAY</td>
+
+          <td> ID #: <b><%= @lucky_draw.id %></b>
+          <br>
+          Created: <b><%= @lucky_draw.created_at.strftime('%d/%m/%Y') %></b>
+          <br>
+          Verifikasi: <b><%= @lucky_draw.verifikasi? ? 'Sudah' : 'Belum' %></b>
+          <br>
+          Email Voucher: <b><%= @lucky_draw.terkirim? ? 'Sudah' : 'Belum' %></b></span></td>
+        </tr>
+      </table></td>
+    </tr>
+
+    <tr class="information">
+      <td colspan="4">
+      <table>
+        <tr>
+          Nama Pemenang: <b><%= @lucky_draw.nama.upcase %></b>
+          <br>
+          Email Pemenang: <%= @lucky_draw.email %>
+        </tr>
+      </table></td>
+    </tr>
+    <tr><td></td></tr>
+    <tr class="heading">
+      <td>Item</td>
+      <td class="right">Voucher Code</td>
+      <td class="right">Voucher</td>
+    </tr>
+
+    <tr class="item">
+      <td> <%= @lucky_draw.kode_barang %>
+      <br>
+      <small><%= @lucky_draw.nama_barang %></small></td>
+
+      <td class="right"> <%= currency(@lucky_draw.voucher_traveloka) %> </td>
+
+      <td class="right"> <%= @lucky_draw.nilai_voucher_traveloka %> </td>
+    </tr>
+    
+    <tr><td></td></tr>
+    <tr>
+      <td> <%= wicked_pdf_image_tag @lucky_draw.faktur_url, size: "260x180" %></td>
+
+      <td> <%= wicked_pdf_image_tag @lucky_draw.serial_img_url, size: "260x180" %> </td>
+
+      <td> <%= wicked_pdf_image_tag @lucky_draw.id_img_url, size: "260x180" %> </td>
+    </tr>
+    
+    <tr><td colspan="2" height="5">&nbsp;</td></tr>
+    <tr><td colspan="2" height="5">&nbsp;</td></tr>
+    <tr><td>Mengetahui</td></tr>
+    <tr><td colspan="2" height="5">&nbsp;</td></tr>
+    <tr><td colspan="2" height="5">&nbsp;</td></tr>
+    <tr><td colspan="2" height="5">&nbsp;</td></tr>
+    <tr><td>GM SALES</td></tr>
+
+  </table>
 </div>
 
-<script>
-  "use strict";
-
-// Change to false if you don't want a timer
-const showTimer = true;
-
-// Set timer countdown time here in minutes : seconds format
-
-// Add list of names here
-const namesList = [
-    'BANTAL ELITE',
-    'GULING ELITE',
-    'MATRAS PROTECTOR ELITE', 
-    'SAMSUNG GALAXY NOTE 10+',
-    '100.000 RUPIAH'
-];
-
-// Default variables
-let i = 0;
-let x = 0;
-let intervalHandle = null;
-const startButton = document.getElementById('startButton');
-const stopButton = document.getElementById('stopButton');
-const headerOne = document.getElementById('headerNames');
-const timesUp = document.getElementById('timesUp');
-const timerWrapper = document.getElementById('timerWrapper');
-const timer = document.getElementById('timer');
-
-// Optional countdown timer
-// Add zero in front of numbers < 10
-
-// Start or stop the name shuffle on button click
-startButton.addEventListener('click', function() {
-    this.style.display = "none";
-    stopButton.style.display = "block";
-    intervalHandle = setInterval(function () {
-        headerNames.textContent = namesList[i++ % namesList.length];
-    }, 50);
-    if (showTimer===true) {
-        timerWrapper.classList.remove('visible');
-    }
-});
-stopButton.addEventListener('click', function() {
-    this.style.display = "none";
-    startButton.style.display = "block";
-    clearInterval(intervalHandle);
-    timer.innerHTML = headerNames.textContent;
-    if (showTimer===true) {
-        timerWrapper.classList.add('visible');
-    }
-});
-
-// Allow use of spacebar to start/stop name shuffle
-document.body.onkeyup = function(e) {
-    if (e.keyCode == 32) {
-        if (x%2===0) {
-            startButton.style.display = "none";
-            stopButton.style.display = "block";
-            intervalHandle = setInterval(function () {
-                headerNames.textContent = namesList[i++ % namesList.length];
-            }, 50);
-            if (showTimer===true) {
-                timerWrapper.classList.remove('visible');
-            }
-        } else {
-            startButton.style.display = "block";
-            stopButton.style.display = "none";
-            clearInterval(intervalHandle);
-            timer.innerHTML = time;
-            if (showTimer===true) {
-                timerWrapper.classList.add('visible');
-            }
-            startTimer();
-        }
-        x++; 
-    }
-} 
-
-// Blinking warning
-  
-</script>

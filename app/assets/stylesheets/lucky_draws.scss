@@ -1,118 +1,213 @@
-body {
-  font: 400 1em/1.5 "Neuton";
-  background: #090d00;
-  color: rgba(255, 255, 255, 0.25);
+.invoice-box {
+    max-width: 100%;
+    max-height: 100%;
+    margin: auto;
+    padding: 30px;
+    border: 1px solid #eee;
+    box-shadow: 0 0 5px rgba(0, 0, 0, .10);
+    font-size: 16px;
+    line-height: 24px;
+    font-family: 'Helvetica Neue', 'Helvetica', Helvetica, Arial, sans-serif;
+    color: #555;
+}
+
+.invoice-box table {
+    width: 100%;
+    line-height: inherit;
+    text-align: left;
+}
+
+.invoice-box table td {
+    padding: 5px;
+    vertical-align: middle;
+}
+
+.invoice-box table tr td:nth-child(2) {
+    text-align: right;
+}
+
+.right {
+  text-align: right;
+}
+
+.invoice-box table tr.top table td {
+    padding-bottom: 20px;
+}
+
+.invoice-box table tr.top table td.title {
+    font-size: 45px;
+    line-height: 45px;
+    color: #333;
+}
+
+.invoice-box table tr.information table td {
+    padding-bottom: 40px;
+}
+
+.invoice-box table tr.heading td {
+    background: #eee;
+    border-bottom: 1px solid #ddd;
+    font-weight: bold;
+}
+
+.invoice-box table tr.details td {
+    padding-bottom: 20px;
+}
+
+.invoice-box table tr.item td{
+    border-bottom: 1px solid #eee;
+}
+
+.invoice-box table tr.item.last td {
+    border-bottom: none;
+}
+
+.badge {
+  display: inline-block;
+  padding: 0.25em 0.4em;
+  font-size: 75%;
+  font-weight: 700;
+  line-height: 1;
   text-align: center;
-  margin: 0;
+  white-space: nowrap;
+  vertical-align: baseline;
+  border-radius: 0.25rem;
 }
-
-p {
-  text-transform: uppercase;
-  border: 4px double rgba(255, 255, 255, 0.25);
-}
-p span {
-  font: 700 4em/1 "Oswald", sans-serif;
-  letter-spacing: 0;
-  display: block;
-  text-shadow: 0 0 80px rgba(255, 255, 255, 0.5);
-  /* Clip Background Image */
-  background: url(http://f.cl.ly/items/010q3E1u3p2Q0j1L1S1o/animated_text_fill.png) repeat-y;
-  -webkit-background-clip: text;
-  background-clip: text;
-  /* Animate Background Image */
-  -webkit-text-fill-color: transparent;
-  -webkit-animation: aitf 80s linear infinite;
-  /* Activate hardware acceleration for smoother animations */
-  -webkit-transform: translate3d(0, 0, 0);
-  -webkit-backface-visibility: hidden;
-}
-
-h1#headerNames {
-  margin-top: 10%;
-  color: #333333;
-  font-family: Georgia, serif;
-  font-size: 20px;
-  text-align: center;
-  cursor: pointer;
-}
-
-.button {
-  width: 150px;
-  margin: auto;
-  padding: 20px;
-  background: #1fa91f;
-  border: 3px solid #fff;
-  border-radius: 10px;
-  color: #fff;
-  font-family: Arial, sans-serif;
-  font-size: 30px;
-  font-weight: bold;
-  text-align: center;
-  text-transform: uppercase;
-  letter-spacing: 2px;
-  display: block;
-  cursor: pointer;
-}
-
-#stopButton {
-  background: #ff0000;
+.badge:empty {
   display: none;
 }
 
-#timerWrapper {
-  margin: 50px 0;
-  color: #333333;
-  font-family: Arial, sans-serif;
-  font-size: 20px;
-  text-align: center;
-  opacity: 0;
-  transition: opacity 1s;
-}
-#timerWrapper.visible {
-  opacity: 1;
+.btn .badge {
+  position: relative;
+  top: -1px;
 }
 
-#timesUp {
-  padding-top: 20%;
-  background-color: red;
+.badge-pill {
+  padding-right: 0.6em;
+  padding-left: 0.6em;
+  border-radius: 10rem;
+}
+
+.badge-primary {
   color: #fff;
-  font-family: Arial, sans-serif;
-  font-size: 100px;
-  font-weight: bold;
-  text-transform: uppercase;
-  text-align: center;
-  position: fixed;
-  left: 0;
-  right: 0;
-  top: 0;
-  bottom: 0;
-  display: none;
-  a {
-    margin: 100px auto;
-    font-size: 15px;
-    position: absolute;
-    bottom: 50px;
-    left: 0;
-    right: 0;
-    display: none;
-  }
-}
-#timesUp.backgroundRed {
-  background-color: #333;
+  background-color: #007bff;
 }
 
-@media only screen and (max-width: 600px) {
-  h1 {
-    font-size: 50px;
-  }
+.badge-primary[href]:hover, .badge-primary[href]:focus {
+  color: #fff;
+  text-decoration: none;
+  background-color: #0062cc;
 }
 
-/* Animate Background Image */
-@-webkit-keyframes aitf {
-  0% {
-    background-position: 0% 50%;
-  }
-  100% {
-    background-position: 100% 50%;
-  }
+.badge-secondary {
+  color: #fff;
+  background-color: #6c757d;
+}
+
+.badge-secondary[href]:hover, .badge-secondary[href]:focus {
+  color: #fff;
+  text-decoration: none;
+  background-color: #545b62;
+}
+
+.badge-success {
+  color: #fff;
+  background-color: #28a745;
+}
+
+.badge-success[href]:hover, .badge-success[href]:focus {
+  color: #fff;
+  text-decoration: none;
+  background-color: #1e7e34;
+}
+
+.badge-info {
+  color: #fff;
+  background-color: #17a2b8;
+}
+
+.badge-info[href]:hover, .badge-info[href]:focus {
+  color: #fff;
+  text-decoration: none;
+  background-color: #117a8b;
+}
+
+.badge-warning {
+  color: #212529;
+  background-color: #ffc107;
+}
+
+.badge-warning[href]:hover, .badge-warning[href]:focus {
+  color: #212529;
+  text-decoration: none;
+  background-color: #d39e00;
+}
+
+.badge-danger {
+  color: #fff;
+  background-color: #dc3545;
+}
+
+.badge-danger[href]:hover, .badge-danger[href]:focus {
+  color: #fff;
+  text-decoration: none;
+  background-color: #bd2130;
+}
+
+.badge-light {
+  color: #212529;
+  background-color: #f8f9fa;
+}
+
+.badge-light[href]:hover, .badge-light[href]:focus {
+  color: #212529;
+  text-decoration: none;
+  background-color: #dae0e5;
+}
+
+.badge-dark {
+  color: #fff;
+  background-color: #343a40;
+}
+
+.badge-dark[href]:hover, .badge-dark[href]:focus {
+  color: #fff;
+  text-decoration: none;
+  background-color: #1d2124;
+}
+
+
+
+
+.invoice-box table tr.total td:nth-child(2) {
+    border-top: 2px solid #eee;
+    font-weight: bold;
+}
+
+// @media only screen and (max-width: 600px) {
+//     .invoice-box table tr.top table td {
+//         width: 100%;
+//         display: block;
+//         text-align: center;
+//     }
+//
+//     .invoice-box table tr.information table td {
+//         width: 100%;
+//         display: block;
+//         text-align: center;
+//     }
+// }
+
+/** RTL **/
+.rtl {
+    direction: rtl;
+    font-family: Tahoma, 'Helvetica Neue', 'Helvetica', Helvetica, Arial, sans-serif;
+}
+
+.rtl table {
+    text-align: right;
+}
+
+.rtl table tr td:nth-child(2) {
+    text-align: left;
 }
