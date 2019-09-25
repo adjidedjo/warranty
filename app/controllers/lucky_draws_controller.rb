@@ -75,6 +75,6 @@ class LuckyDrawsController < ApplicationController
     # Never trust parameters from the scary internet, only allow the white list through.
     def lucky_draw_params
       params.require(:lucky_draw).permit(:nama, :voucher_royal, :serial, :email, :nilai_voucher, :store_id, :faktur, 
-      :id_img, :voucher_traveloka, :serial_img, :nilai_voucher_traveloka, :terkirim)
+      :id_img, :voucher_traveloka, :serial_img, :nilai_voucher_traveloka, :terkirim, :nama_barang, :kode_barang, :verifikasi)
     end
 end

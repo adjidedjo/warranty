@@ -23,6 +23,10 @@ gem "mini_magick"
 
 gem 'browser'
 
+#pdf
+gem 'wicked_pdf'
+gem 'wkhtmltopdf-binary'
+
 # authentication
 gem 'devise'
 gem 'cancancan'

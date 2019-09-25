@@ -20,6 +20,21 @@
             </div>
           </div>
         </fieldset>
+        
+        <% if f.object.persisted? %>
+          <fieldset>
+            <div class="form-group has-feedback">
+              <label class="col-sm-2 control-label">Nama Barang:</label>
+              <div class="col-sm-3">
+                <%= f.text_area :nama_barang, class: "form-control", required: "required", readonly: true %>
+              </div>
+              <label class="col-sm-2 control-label">Kode Barang:</label>
+              <div id="registration_zip_code" class="col-sm-4">
+                <%= f.text_field :kode_barang, class: "form-control", required: "required", readonly: true %>
+              </div>
+            </div>
+          </fieldset>
+        <% end %>
 
         <fieldset>
           <div class="form-group has-feedback">
@@ -41,7 +56,14 @@
               <%= f.text_field :nilai_voucher, class: "form-control", required: "required", readonly: f.object.persisted? %>
             </div>
           </div>
+          <div class="form-group has-feedback">
+              <label class="col-sm-2 control-label">Sudah terverifikasi?:</label>
+              <div class="col-sm-3">
+                <%= f.check_box :verifikasi %>
+              </div>
+            </div>
         </fieldset>
+        
         <% unless f.object.persisted? %>    
           <fieldset>
             <div class="custom-file has-feedback">
