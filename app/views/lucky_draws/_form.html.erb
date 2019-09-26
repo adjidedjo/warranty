@@ -44,18 +44,25 @@
             </div>
             <label class="col-sm-2 control-label">Email:</label>
             <div id="registration_zip_code" class="col-sm-4">
-              <%= f.text_field :email, class: "form-control", onkeydown: "validate(this.value)", required: "required", readonly: f.object.persisted? %>
+              <%= f.text_field :email, class: "form-control", onkeydown: "validate(this.value)", required: "required" %>
             </div>
           </div>
         </fieldset>
         
         <fieldset>
           <div class="form-group has-feedback">
-            <label class="col-sm-2 control-label">Nilai Voucher:</label>
+            <label class="col-sm-2 control-label">Toko:</label>
             <div class="col-sm-3">
-              <%= f.text_field :nilai_voucher, class: "form-control", required: "required", readonly: f.object.persisted? %>
+              <%= f.text_field :toko, class: "form-control", required: "required", readonly: f.object.persisted? %>
+            </div>
+            <label class="col-sm-2 control-label">Kota:</label>
+            <div id="registration_zip_code" class="col-sm-4">
+              <%= f.text_field :kota, class: "form-control", required: "required", readonly: f.object.persisted? %>
             </div>
           </div>
+        </fieldset>
+        
+        <fieldset>
           <div class="form-group has-feedback">
               <label class="col-sm-2 control-label">Sudah terverifikasi?:</label>
               <div class="col-sm-3">
@@ -94,21 +101,6 @@
         <% end %>
         
         <% if f.object.persisted? %>
-          <fieldset>
-            <div class="form-group has-feedback">
-              <label class="col-sm-2 control-label">Kode Voucher Traveloka:</label>
-              <div class="col-sm-3">
-                <%= f.text_field :voucher_traveloka, class: "form-control" %>
-              </div>
-            </div>
-            
-            <div class="form-group has-feedback">
-              <label class="col-sm-2 control-label">Nilai Voucher Traveloka:</label>
-              <div class="col-sm-3">
-                <%= f.text_field :nilai_voucher_traveloka, class: "form-control" %>
-              </div>
-            </div>
-          </fieldset>
           
           <fieldset>
             <label class="col-sm-2 control-label">Sudah kirim email?:</label>
@@ -140,6 +132,7 @@
         <button type="submit" class="btn btn-block btn-primary mt-lg">
           VERIFY
         </button>
+        
         <% if @lucky_draw.errors.any? %>
           <div id="error_explanation">
             <h2>Data tidak tersimpan, karena:</h2>

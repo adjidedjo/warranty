@@ -11,10 +11,9 @@
           <th>EMAIL</th>
           <th>KODE VOUCHER</th>
           <th>SERIAL</th>
-          <th>CODE</th>
           <th>DESC</th>
           <th>VOUCHER</th>
-          <th>TRAVELOKA</th>
+          <th>e-VOUCHER</th>
           <th>VERIFIKASI</th>
           <th>Kirim Email?</th>
           <th></th>
@@ -30,15 +29,14 @@
           <td style="text-align: left"><%= ld.email %></td>
           <td style="text-align: left"><%= ld.voucher_royal %></td>
           <td style="text-align: left"><%= ld.serial %></td>
-          <td style="text-align: left"><%= ld.kode_barang %></td>
           <td style="text-align: left"><%= ld.nama_barang %></td>
           <td style="text-align: left"><%= currency(ld.nilai_voucher) %></td>
-          <td style="text-align: left"><%= currency(ld.nilai_voucher_traveloka) %></td>
+          <td style="text-align: left"><%= ld.voucher_traveloka %></td>
           <td style="text-align: left"><%= ld.verifikasi? ? "Sudah" : "Belum" %></td>
           <td style="text-align: left"><%= ld.terkirim? ? "Sudah" : "Belum" %></td>
           <td><%= link_to 'Download', lucky_draw_path(ld.id, format: :pdf), class: "mb-sm btn-xs btn btn-primary btn-outline" %></td>
           <td><%= link_to 'Edit', edit_lucky_draw_path(ld.id), class: "mb-sm btn-xs btn btn-primary btn-outline" %></td>
-          <td><%= link_to 'Hapus', lucky_draw_path(ld.id), method: :delete, data: { confirm: "Yakin?"}, class: "mb-sm btn-xs btn btn-danger btn-outline" %></td>
+          <td><%= link_to 'Hapus', lucky_draw_path(ld.id), method: :delete, data: { confirm: "Yakin?"}, class: "mb-sm btn-xs btn btn-danger btn-outline" unless ld.terkirim? %></td>
         </tr>
         <% end %>
       </tbody>

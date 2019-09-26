@@ -46,11 +46,11 @@
     
     <tr><td></td></tr>
     <tr>
-      <td> <%= image_tag @lucky_draw.faktur_url, size: "260x180" %></td>
+      <td> <%= wicked_pdf_image_tag @lucky_draw.faktur_url, size: "260x180" %></td>
 
-      <td> <%= image_tag @lucky_draw.serial_img_url, size: "260x180" %> </td>
+      <td> <%= wicked_pdf_image_tag @lucky_draw.serial_img_url, size: "260x180" %> </td>
 
-      <td> <%= image_tag @lucky_draw.id_img_url, size: "260x180" %> </td>
+      <td> <%= wicked_pdf_image_tag @lucky_draw.id_img_url, size: "260x180" %> </td>
     </tr>
     
     <tr><td colspan="2" height="5">&nbsp;</td></tr>
