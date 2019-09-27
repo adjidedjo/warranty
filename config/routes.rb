@@ -13,6 +13,7 @@ Rails.application.routes.draw do
   
   get 'lucky_draws/lucky_draw'
   post 'lucky_draws/lucky_draw'
+  post 'lucky_draws/import_voucher'
   
   get 'pages/registered'
   get 'pages/error500'

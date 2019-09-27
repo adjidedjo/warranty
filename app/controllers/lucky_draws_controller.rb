@@ -2,6 +2,11 @@ class LuckyDrawsController < ApplicationController
   before_action :set_lucky_draw, only: [:show, :edit, :update, :destroy]
   skip_before_action :set_lucky_draw, only: :spin_time
   
+  def import_voucher
+    MasterVoucher.import_voucher(params[:file])
+    redirect_to lucky_draws_url, notice: "Voucher imported."
+  end
+  
   def spin_time
 
   end
