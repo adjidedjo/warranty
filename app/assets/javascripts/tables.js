@@ -22,7 +22,3 @@
 //= require datatables-buttons/js/buttons.print
 //= require datatables-responsive/js/dataTables.responsive
 //= require datatables-responsive/js/responsive.bootstrap
-
-//--- jqGrid
-//= require jqgrid/js/jquery.jqGrid.js
-//= require jqgrid/js/i18n/grid.locale-en.js
