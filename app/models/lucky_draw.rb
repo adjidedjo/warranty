@@ -21,8 +21,8 @@ class LuckyDraw < ApplicationRecord
   before_update do
     if self.voucher_traveloka.nil?
       traveloka = LuckyGift.get_traveloka_vouchers(self.nilai_voucher)
-      self.voucher_traveloka = traveloka.kode
-      self.nilai_voucher_traveloka = traveloka.nilai
+    self.voucher_traveloka = traveloka.kode
+    self.nilai_voucher_traveloka = traveloka.nilai
     end
   end
 
@@ -43,6 +43,20 @@ class LuckyDraw < ApplicationRecord
     ActiveRecord::Base.connection.execute("
       UPDATE traveloka_vouchers SET used = true WHERE kode = '#{self.voucher_traveloka}'
     ")
+  end
+
+  def self.calculate_total_claim
+    tot = find_by_sql("
+      SELECT SUM(nilai) as total_claim FROM master_vouchers WHERE used is true
+    ").first
+    return tot.nil? ? "0" : tot.total_claim
+  end
+
+  def self.calculate_total_claim_travel
+    tot = find_by_sql("
+      SELECT SUM(nilai) as total_travel FROM traveloka_vouchers WHERE used is true
+    ").first
+    return tot.nil? ? "0" : tot.total_travel
   end
 
   private

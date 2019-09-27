@@ -15,6 +15,8 @@ class LuckyDrawsController < ApplicationController
   # GET /lucky_draws.json
   def index
     @lucky_draws = LuckyDraw.all
+    @total_claim = LuckyDraw.calculate_total_claim
+    @total_traveloka = LuckyDraw.calculate_total_claim_travel
   end
 
   # GET /lucky_draws/1
