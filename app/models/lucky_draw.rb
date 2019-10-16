@@ -21,8 +21,8 @@ class LuckyDraw < ApplicationRecord
   before_update do
     if self.voucher_traveloka.nil?
       traveloka = LuckyGift.get_traveloka_vouchers(self.nilai_voucher)
-    self.voucher_traveloka = traveloka.kode
-    self.nilai_voucher_traveloka = traveloka.nilai
+      self.voucher_traveloka = traveloka.kind_of?(Array) ? traveloka.map{|t| t.kode}.join(', ') : traveloka.kode
+      self.nilai_voucher_traveloka = traveloka.kind_of?(Array) ? traveloka.map{|t| t.nilai}.join(', ')  : traveloka.nilai
     end
   end
 
@@ -34,12 +34,6 @@ class LuckyDraw < ApplicationRecord
   end
 
   after_create do
-    ActiveRecord::Base.connection.execute("
-      UPDATE master_vouchers SET used = true WHERE kode = '#{self.voucher_royal}'
-    ")
-  end
-
-  after_update do
     ActiveRecord::Base.connection.execute("
       UPDATE traveloka_vouchers SET used = true WHERE kode = '#{self.voucher_traveloka}'
     ")
