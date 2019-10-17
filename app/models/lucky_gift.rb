@@ -5,13 +5,16 @@ class LuckyGift < ApplicationRecord
     list_voucher = []
     tvoucher = find_by_sql("SELECT * FROM traveloka_vouchers WHERE nilai < #{voucher} AND used = false ORDER BY id DESC")
     list_voucher << tvoucher.first.nilai.to_i
+    kode << tvoucher.first.kode
 
     for e in tvoucher
       a = list_voucher
-      next e if a.sum > voucher.to_i || a.sum == e.nilai.to_i || (a.sum + e.nilai.to_i) > voucher.to_i
+      b = kode
+      next e if a.sum > voucher.to_i || (a.sum + e.nilai.to_i) > voucher.to_i || kode.include?(e.kode)
       list_voucher << e.nilai.to_i
+      kode << e.kode
     end
-    return list_voucher
+    return kode
   end
 
   def self.get_traveloka_vouchers(voucher)
@@ -20,7 +23,7 @@ class LuckyGift < ApplicationRecord
       value = get_value_vouchers(voucher)
       hasil = []
       value.each do |a|
-        voucher = find_by_sql("SELECT * FROM traveloka_vouchers WHERE nilai = #{a} AND used = false LIMIT 1").first
+        voucher = find_by_sql("SELECT * FROM traveloka_vouchers WHERE kode = '#{a}'").first
   
         hasil << voucher
         update_traveloka_voucher(voucher)

@@ -35,7 +35,7 @@ class LuckyDraw < ApplicationRecord
 
   after_create do
     ActiveRecord::Base.connection.execute("
-      UPDATE traveloka_vouchers SET used = true WHERE kode = '#{self.voucher_traveloka}'
+      UPDATE master_vouchers SET used = true WHERE kode = '#{self.voucher_royal}'
     ")
   end
 
