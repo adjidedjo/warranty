@@ -2,6 +2,7 @@ class LuckyDraw < ApplicationRecord
   mount_uploader :serial_img, NotaUploader
   mount_uploader :faktur, NotaUploader
   mount_uploader :id_img, NotaUploader
+  mount_uploader :voucher_img, NotaUploader
 
   validates :voucher_royal, :serial, uniqueness: {message: "SUDAH DIGUNAKAN"}
   validates :serial, length: { is: 11, message: "TIDAK SESUAI STANDARD" }, numericality: { message: "TIDAK SESUAI STANDARD" }
