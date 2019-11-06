@@ -32,6 +32,7 @@
       <td>Item</td>
       <td class="right">e-Voucher</td>
       <td class="right">Nilai</td>
+      <td class="right"></td>
     </tr>
 
     <tr class="item">
@@ -42,6 +43,8 @@
       <td class="right"> <%= currency(@lucky_draw.voucher_traveloka) %> </td>
 
       <td class="right"> <%= currency(@lucky_draw.nilai_voucher_traveloka) %> </td>
+
+      <td class="right"></td>
     </tr>
     
     <tr><td></td></tr>
@@ -52,7 +55,7 @@
 
       <td> <%= wicked_pdf_image_tag @lucky_draw.id_img_url, size: "260x180" %> </td>
 
-      <td> <%= wicked_pdf_image_tag @lucky_draw.voucher_img_url, size: "260x180" %> </td>
+      <td> <%= @lucky_draw.voucher_img_url.nil? ? 'GAMBAR VOUCHER' : (wicked_pdf_image_tag @lucky_draw.voucher_img_url, size: "260x180") %> </td>
     </tr>
     
     <tr><td colspan="2" height="5">&nbsp;</td></tr>
