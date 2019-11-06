@@ -52,7 +52,7 @@
 
       <td> <%= image_tag @lucky_draw.id_img_url, size: "260x180" %> </td>
 
-      <td> <%= image_tag @lucky_draw.voucher_img_url, size: "260x180" %> </td>
+      <td> <%= @lucky_draw.voucher_img_url.nil? ? 'GAMBAR VOUCHER' : (image_tag @lucky_draw.voucher_img_url, size: "260x180") %> </td>
     </tr>
     
     <tr><td colspan="2" height="5">&nbsp;</td></tr>
