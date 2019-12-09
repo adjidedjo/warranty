@@ -3,7 +3,7 @@ class LuckyGift < ApplicationRecord
     kode = []
     nilai = []
     list_voucher = []
-    tvoucher = find_by_sql("SELECT * FROM traveloka_vouchers WHERE used = false ORDER BY id DESC")
+    tvoucher = find_by_sql("SELECT * FROM traveloka_vouchers WHERE used = false ORDER BY CAST(nilai AS DECIMAL) DESC")
     list_voucher << tvoucher.first.nilai.to_i
     kode << tvoucher.first.kode
 
