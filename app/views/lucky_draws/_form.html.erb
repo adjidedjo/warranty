@@ -98,6 +98,15 @@
               </div>
             </div>
           </fieldset>
+          
+          <fieldset>
+            <div class="custom-file has-feedback">
+              <label class="col-sm-2 control-label">Upload Voucher:</label>
+              <div class="col-sm-4">
+                <%= f.file_field :voucher_img, class: "custom-file-input", required: "required" %>
+              </div>
+            </div>
+          </fieldset>
         <% end %>
         
         <% if f.object.persisted? %>
