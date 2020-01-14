@@ -1,15 +1,15 @@
 class LuckyGift < ApplicationRecord
 
   def self.get_traveloka_vouchers(voucher)
-    voucher_value = find_by_sql("SELECT * FROM traveloka_vouchers WHERE nilai = '#{voucher}' AND used = 0").first
+    voucher_value = find_by_sql("SELECT * FROM traveloka_vouchers WHERE nilai = '#{voucher}' AND used = false").first
     if voucher_value.nil?
       value = get_value_vouchers(voucher)
       hasil = []
       value.each do |a|
-        voucher = find_by_sql("SELECT * FROM traveloka_vouchers WHERE nilai = #{a} AND used = 0").first
+        voucher = find_by_sql("SELECT * FROM traveloka_vouchers WHERE nilai = #{a} AND used = false").first
   
-        hasil << voucher
         update_traveloka_voucher(voucher)
+        hasil << voucher
       end
       return hasil
     else
@@ -22,7 +22,7 @@ class LuckyGift < ApplicationRecord
     nilai = 0
     total = voucher.to_i - nilai.to_i
     list_nilai = []
-    tvoucher = find_by_sql("SELECT * FROM traveloka_vouchers WHERE nilai <= #{voucher} AND used = 0 ORDER BY CAST(nilai AS DECIMAL) DESC")
+    tvoucher = find_by_sql("SELECT * FROM traveloka_vouchers WHERE nilai <= #{voucher} AND used = false ORDER BY CAST(nilai AS DECIMAL) DESC")
 
     for e in tvoucher
       if (nilai+e.nilai.to_i) <= voucher.to_i
