@@ -9,7 +9,6 @@ class LuckyGift < ApplicationRecord
         voucher = find_by_sql("SELECT * FROM traveloka_vouchers WHERE nilai = #{a} AND used = 0").first
   
         hasil << voucher
-        raise voucher.inspect
         update_traveloka_voucher(voucher)
       end
       return hasil
