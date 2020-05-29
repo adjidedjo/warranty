@@ -17,6 +17,7 @@
             <th>e-VOUCHER</th>
             <th>VERIFIKASI</th>
             <th>Kirim Email?</th>
+            <th>Tgl Input</th>
             <th></th>
             <th></th>
             <th></th>
@@ -35,6 +36,7 @@
             <td style="text-align: left"><%= ld.voucher_traveloka %></td>
             <td style="text-align: left"><%= ld.verifikasi? ? "Sudah" : "Belum" %></td>
             <td style="text-align: left"><%= ld.terkirim? ? "Sudah" : "Belum" %></td>
+            <td style="text-align: left"><%= ld.created_at.strftime("%F") %></td>
             <td><%= link_to 'Download', lucky_draw_path(ld.id, format: :pdf), class: "mb-sm btn-xs btn btn-primary btn-outline" %></td>
             <td><%= link_to 'Edit', edit_lucky_draw_path(ld.id), class: "mb-sm btn-xs btn btn-primary btn-outline" unless ld.terkirim? %></td>
             <td><%= link_to 'Hapus', lucky_draw_path(ld.id), method: :delete, data: { confirm: "Yakin?"}, class: "mb-sm btn-xs btn btn-danger btn-outline" unless ld.terkirim? %></td>
