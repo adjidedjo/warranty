@@ -23,6 +23,7 @@ class LuckyGift < ApplicationRecord
     total = voucher.to_i - nilai.to_i
     list_nilai = []
     list_kode = []
+    raise voucher.inspect
     tvoucher = find_by_sql("SELECT * FROM traveloka_vouchers WHERE nilai <= #{voucher} AND used = false ORDER BY CAST(nilai AS DECIMAL) DESC")
 
     for e in tvoucher

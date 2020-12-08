@@ -1,5 +1,7 @@
 Rails.application.routes.draw do
   
+  get 'konfirmasi_display/index'
+
   resources :lucky_draws do
     get "new/:template_id", to: "lucky_draws#new", on: :collection
   end

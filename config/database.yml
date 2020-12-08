@@ -13,7 +13,7 @@ development:
   reconnect: true
   username: root
   password: royalabadi
-  host: 192.168.101.220
+  host: 192.218.218.128
   #host: 127.0.0.1
   #port: 3307
 
@@ -22,3 +22,16 @@ jdeoracle:
   username: JDE
   password: jdevg920
   database: "(DESCRIPTION=(ADDRESS_LIST=(ADDRESS=(PROTOCOL=tcp)(HOST=192.212.212.54)(PORT=1521)))(CONNECT_DATA=(SERVICE_NAME=ORCL)))"
+
+dbmarketing:
+  adapter: mysql2
+  encoding: utf8
+  reconnect: false
+  database: dbmarketing
+  pool: 5
+  reconnect: true
+  username: root
+  password: royalabadi
+  #host: 103.105.128.229
+  host: 192.218.218.128
+  #port: 3311
