@@ -18,7 +18,7 @@ gem 'jquery-ui-rails'
 # gem 'active_model_serializers'
 # gem 'rack-cors'
 
-gem 'carrierwave', '~> 1.0'
+gem 'carrierwave', '~> 1.3'
 gem "mini_magick"
 
 gem 'browser'
@@ -54,7 +54,7 @@ gem 'gmaps4rails'
 gem 'underscore-rails'
 gem 'countries'
 gem 'country_select'
-gem 'carrierwave', '~> 1.0'
+gem 'carrierwave', '~> 1.3'
 
 #user ajax datatables
 #gem 'ajax-datatables-rails'
